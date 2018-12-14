@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
+import { TodoModule } from './todo/todo.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDl_ePdwsI0LLD31Q1SXK5PqfVf4zkxWjQ",
@@ -28,6 +29,7 @@ const firebaseConfig = {
   imports: [
     HomeModule,
     SharedModule,
+    TodoModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

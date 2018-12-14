@@ -1,1 +1,9 @@
-<mat-toolbar color="primary">Angularfire ToDo</mat-toolbar>
+<mat-toolbar color="primary">
+  <div fxLayoutAlign="space-between center" class="nav-buttons">
+    <span>Angularfire ToDo</span>
+    <div>
+      <button mat-button [routerLink]="['/todo-list']">List of ToDo</button>
+    </div>
+  </div>
+
+</mat-toolbar>

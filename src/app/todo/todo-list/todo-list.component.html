@@ -1,0 +1,16 @@
+<h1>To Do</h1>
+
+<mat-card *ngFor="let todo of todos$ | async" (click)="editTodo(todo)">
+  <h3>{{todo?.title}}</h3>
+  <div *ngFor="let item of todo?.content; let i = index;">
+    <div *ngIf="i < 3" fxLayout="row" fxLayoutAlign="start center">
+      <mat-checkbox [(ngModel)]="item.checked" style="margin-right: 12px;" [disabled]="true"></mat-checkbox>
+      <div>{{item?.content}}</div>
+    </div>
+  </div>
+  <div *ngIf="todo?.content?.length > 3" style="color:darkgrey">(more)</div>
+</mat-card>
+
+<button mat-fab [routerLink]="['/todo-edit/new']">
+  <mat-icon>add</mat-icon>
+</button>
