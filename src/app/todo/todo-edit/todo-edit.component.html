@@ -6,24 +6,25 @@
       <input matInput placeholder="Title" [(ngModel)]="todo.title">
     </mat-form-field>
     <div>
-      <button mat-raised-button style="margin-right: 12px;" (click)="save(todo)">Save</button>
+      <button mat-raised-button color="accent" style="margin-right: 12px;" (click)="save(todo)">Save</button>
       <button mat-raised-button (click)="deleteTodo(todo)">Delete</button>
     </div>
   </div>
   <mat-divider></mat-divider>
 
   <div *ngFor="let item of todo.content; let i = index;" fxLayout="row" fxLayoutAlign="start center">
-    <mat-checkbox [(ngModel)]="item.checked" style="margin-right: 12px;" (change)="saveTodo(todo)"></mat-checkbox>
-    <mat-form-field class="full-width">
-      <input matInput [(ngModel)]="item.content" (change)="saveTodo(todo)">
-    </mat-form-field>
+    <mat-checkbox [(ngModel)]="item.checked" style="margin-right: 12px;"></mat-checkbox>
+    <div class="full-width">
+      <input class="full-width" type="text" placeholder="Enter item description" [(ngModel)]="item.content">
+    </div>
+
     <div class="button" (click)="removeItem(i)">
       <mat-icon>delete_outline</mat-icon>
     </div>
   </div>
   <div>
     <div class="button" (click)="addItem()" style="padding-top: 8px;">
-      <mat-icon color="accent">add_box</mat-icon>
+      <mat-icon>add_box</mat-icon>
     </div>
   </div>
 </mat-card>

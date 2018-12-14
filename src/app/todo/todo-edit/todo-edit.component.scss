@@ -1,6 +1,18 @@
 div.button {
   cursor: pointer;
 }
-mat-form-field.full-width {
+.full-width {
   width: 100% !important;
+}
+input[matInput] {
+  font-weight: bold;
+}
+input:not([matInput]) {
+  border: none;
+  height: 32px;
+  font-size: 16px;
+  padding: 3px;
+  &:focus {
+    outline: none;
+  }
 }
