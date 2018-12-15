@@ -1,27 +1,36 @@
+<!-- page title -->
 <h1>{{isNewTodo ? 'New' : 'Edit'}} To Do</h1>
 
+<!-- card for the todo being edited -->
 <mat-card *ngIf="todo">
   <div fxLayoutAlign="space-between center">
+    <!-- todo title field -->
     <mat-form-field>
       <input matInput placeholder="Title" [(ngModel)]="todo.title">
     </mat-form-field>
+    <!-- save and delete buttons -->
     <div>
       <button mat-raised-button color="accent" style="margin-right: 12px;" (click)="save(todo)">Save</button>
-      <button mat-raised-button (click)="deleteTodo(todo)">Delete</button>
+      <button mat-raised-button (click)="deleteTodo(todo)" [disabled]="isNewTodo">Delete</button>
     </div>
   </div>
   <mat-divider></mat-divider>
 
+  <!-- repeat over the entire list of items for this todo -->
   <div *ngFor="let item of todo.content; let i = index;" fxLayout="row" fxLayoutAlign="start center">
+    <!-- checkbox for the list item -->
     <mat-checkbox [(ngModel)]="item.checked" style="margin-right: 12px;"></mat-checkbox>
+    <!-- input for the list item -->
     <div class="full-width">
       <input class="full-width" type="text" placeholder="Enter item description" [(ngModel)]="item.content">
     </div>
 
+    <!-- remove icon for the list item -->
     <div class="button" (click)="removeItem(i)">
       <mat-icon>delete_outline</mat-icon>
     </div>
   </div>
+  <!-- add icon to add a new list item -->
   <div>
     <div class="button" (click)="addItem()" style="padding-top: 8px;">
       <mat-icon>add_box</mat-icon>

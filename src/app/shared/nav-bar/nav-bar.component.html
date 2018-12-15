@@ -1,14 +1,22 @@
+<!-- nav-bar toolbar to stretch across the page -->
 <mat-toolbar color="primary">
   <div fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%" fxLayoutAlign="space-between center" class="nav-buttons">
+    <!-- Main button that goes to the home page -->
     <button class="main" mat-button [routerLink]="['/home']">AngularFire ToDo</button>
 
     <div>
+      <!-- button to the about page -->
       <button mat-button [routerLink]="['/about']">About</button>
+
+      <!-- only show these two buttons if the user is authenticated -->
       <ng-template [ngIf]="user" [ngIfElse]="notAuthenticated">
+        <!-- buttons to the todo-list and logout links -->
         <button mat-button [routerLink]="['/todo-list']">To Dos</button>
         <button mat-button (click)="logout()">Logout</button>
       </ng-template>
+      <!-- only show this if the user is not authenticated -->
       <ng-template #notAuthenticated>
+        <!-- button to login -->
         <button mat-button [routerLink]="['/login']">Login</button>
       </ng-template>
     </div>

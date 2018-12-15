@@ -1,20 +1,27 @@
+<!-- page title -->
 <h1>To Do</h1>
 
+<!-- loop through all todos and display a card for each -->
 <mat-card *ngFor="let todo of todos$ | async" (click)="editTodo(todo)">
+  <!-- todo's title -->
   <h3>{{todo?.title}}</h3>
+  <!-- list the first three items in the todo -->
   <div *ngFor="let item of todo?.content; let i = index;">
     <div *ngIf="i < 3" fxLayout="row" fxLayoutAlign="start center">
       <mat-checkbox [(ngModel)]="item.checked" style="margin-right: 12px;" [disabled]="true"></mat-checkbox>
       <div>{{item?.content}}</div>
     </div>
   </div>
+  <!-- display a message if there are more than 3 items in the todo's list -->
   <div *ngIf="todo?.content?.length > 3" style="color:darkgrey">(more)</div>
 </mat-card>
 
+<!-- if the user does not have any todos, show a card that tells them this and links to create a new todo -->
 <mat-card [routerLink]="['/todo-edit/new']" *ngIf="(todos$ | async)?.length === 0">
   You don't have any ToDos yet! Click here to add one.
 </mat-card>
 
+<!-- add new todo button -->
 <button mat-fab [routerLink]="['/todo-edit/new']">
   <mat-icon>add</mat-icon>
 </button>

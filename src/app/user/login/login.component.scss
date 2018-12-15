@@ -1,3 +1,4 @@
+/* style the login form */
 mat-form-field {
   width: 100%;
   @media (min-width:599px) {
@@ -7,9 +8,11 @@ mat-form-field {
     width: 60%;
   }
 }
+/* style the card */
 mat-card {
   padding: 24px 32px;
 }
+/* style the anchor tags */
 a {
   padding: 12px;
   text-decoration: none;
