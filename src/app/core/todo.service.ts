@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { ITodo } from '../todo';
+import { map } from 'rxjs/operators';
+import { ITodo } from '../todo/todo';
 
 @Injectable({providedIn: 'root'})
 export class TodoService {

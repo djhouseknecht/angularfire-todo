@@ -1,9 +1,16 @@
 <mat-toolbar color="primary">
-  <div fxLayoutAlign="space-between center" class="nav-buttons">
-    <span>Angularfire ToDo</span>
+  <div fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%" fxLayoutAlign="space-between center" class="nav-buttons">
+    <button class="main" mat-button [routerLink]="['/home']">AngularFire ToDo</button>
+
     <div>
-      <button mat-button [routerLink]="['/todo-list']">List of ToDo</button>
+      <button mat-button [routerLink]="['/about']">About</button>
+      <ng-template [ngIf]="user" [ngIfElse]="notAuthenticated">
+        <button mat-button [routerLink]="['/todo-list']">To Dos</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-template>
+      <ng-template #notAuthenticated>
+        <button mat-button [routerLink]="['/login']">Login</button>
+      </ng-template>
     </div>
   </div>
-
 </mat-toolbar>

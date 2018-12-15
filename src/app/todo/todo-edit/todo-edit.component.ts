@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../service/todo.service';
-import { Observable, of } from 'rxjs';
+import { TodoService } from '../../core/todo.service';
+import { Observable } from 'rxjs';
 import { ITodo } from '../todo';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -27,11 +27,9 @@ export class TodoEditComponent implements OnInit {
     this.isNewTodo = this.todoKey === 'new';
 
     if (this.isNewTodo) {
-      // this.todo$ = of({}) as Observable<ITodo>;
       this.todo = {} as ITodo;
     } else {
       this.todoService.getTodo(this.todoKey).subscribe(todo => this.todo = todo);
-      // this.todo$ = this.todoService.getTodo(this.todoKey);
     }
   }
 

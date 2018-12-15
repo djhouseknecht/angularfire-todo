@@ -1,0 +1,26 @@
+<h1>Login</h1>
+<mat-card>
+  <div *ngIf="!user" fxLayout="column" fxLayoutAlign="start center">
+    <h2>{{newUser ? 'Sign Up' : 'Login'}}</h2>
+    <mat-form-field>
+      <input matInput type="email" [(ngModel)]="credentials.email" placeholder="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" [(ngModel)]="credentials.password" placeholder="password">
+    </mat-form-field>
+    <ng-template [ngIf]="newUser" [ngIfElse]="existingUser">
+      <button mat-raised-button (click)="signup()" [disabled]="!credentials.email || !credentials.password" style="margin-right: 12px;">Signup</button>
+      <a href="javascript:void(0);" (click)="toggleNewUser()">Already an existing user?</a>
+    </ng-template>
+    <ng-template #existingUser>
+      <button mat-raised-button (click)="login()" [disabled]="!credentials.email || !credentials.password">Login</button>
+      <a href="javascript:void(0);" (click)="toggleNewUser()">New user?</a>
+    </ng-template>
+    <div *ngIf="errorMessage" style="color:crimson">{{errorMessage}}</div>
+  </div>
+
+  <div *ngIf="user" fxFlex>
+    <h1>Welcome {{ user?.email }}!</h1>
+    <button mat-raised-button (click)="logout()" *ngIf="user">Logout</button>
+  </div>
+</mat-card>

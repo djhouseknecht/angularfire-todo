@@ -1,0 +1,19 @@
+mat-form-field {
+  width: 100%;
+  @media (min-width:599px) {
+    width: 80%;
+  }
+  @media(min-width:959px) {
+    width: 60%;
+  }
+}
+mat-card {
+  padding: 24px 32px;
+}
+a {
+  padding: 12px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

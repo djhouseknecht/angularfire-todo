@@ -5,13 +5,15 @@ import { AngularFireModule } from '@angular/fire';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {  AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { TodoModule } from './todo/todo.module';
+import { UserModule } from './user/user.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDl_ePdwsI0LLD31Q1SXK5PqfVf4zkxWjQ",
@@ -30,9 +32,11 @@ const firebaseConfig = {
     HomeModule,
     SharedModule,
     TodoModule,
+    UserModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AngularFirestoreModule,
     AppRoutingModule,
     MaterialModule,
