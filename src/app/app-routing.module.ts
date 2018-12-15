@@ -5,9 +5,11 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { TodoEditComponent } from './todo/todo-edit/todo-edit.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './core/auth.guard';
+import { AboutComponent } from './about/about/about.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'todo-list', component: TodoListComponent, canActivate: [AuthGuard] },
   { path: 'todo-edit/:id', component: TodoEditComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },

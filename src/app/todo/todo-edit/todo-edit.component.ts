@@ -3,6 +3,7 @@ import { TodoService } from '../../core/todo.service';
 import { Observable } from 'rxjs';
 import { ITodo } from '../todo';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-todo-edit',
@@ -14,29 +15,40 @@ export class TodoEditComponent implements OnInit {
   public isNewTodo: boolean;
   public todo$: Observable<ITodo>;
   public todo: ITodo;
+  public user: firebase.User;
 
   constructor(
     private todoService: TodoService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+
     this.todoKey = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.isNewTodo = this.todoKey === 'new';
 
-    if (this.isNewTodo) {
-      this.todo = {} as ITodo;
-    } else {
-      this.todoService.getTodo(this.todoKey).subscribe(todo => this.todo = todo);
-    }
+    this.authService.getUser().subscribe(user => {
+      this.user = user;
+      if (this.isNewTodo) {
+        this.todo = {} as ITodo;
+        this.todo.userid = this.user.uid;
+      } else {
+        this.todoService.getTodo(this.todoKey).subscribe(todo => {
+          this.todo = todo;
+          this.todo.userid = this.user.uid;
+        });
+      }
+
+    });
   }
 
   public addItem(): void {
     if (!this.todo) return;
     if (!this.todo.content || !this.todo.content.length) this.todo.content = [];
-    this.todo.content.push({checked: false, content: null});
+    this.todo.content.push({ checked: false, content: null });
     this.saveTodo(this.todo);
   }
 

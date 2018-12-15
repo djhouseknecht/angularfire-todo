@@ -11,6 +11,10 @@
   <div *ngIf="todo?.content?.length > 3" style="color:darkgrey">(more)</div>
 </mat-card>
 
+<mat-card [routerLink]="['/todo-edit/new']" *ngIf="(todos$ | async)?.length === 0">
+  You don't have any ToDos yet! Click here to add one.
+</mat-card>
+
 <button mat-fab [routerLink]="['/todo-edit/new']">
   <mat-icon>add</mat-icon>
 </button>

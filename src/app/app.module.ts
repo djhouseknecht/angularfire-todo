@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { TodoModule } from './todo/todo.module';
 import { UserModule } from './user/user.module';
+import { AboutModule } from './about/about.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDl_ePdwsI0LLD31Q1SXK5PqfVf4zkxWjQ",
@@ -33,6 +34,7 @@ const firebaseConfig = {
     SharedModule,
     TodoModule,
     UserModule,
+    AboutModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
